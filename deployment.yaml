@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bid-validation
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bid-validation
+  template:
+    metadata:
+      labels:
+        app: bid-validation
+    spec:
+      containers:
+      - name: bid-validation
+        image: dockerhub-username/bid-validation:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bid-validation-service
+spec:
+  selector:
+    app: bid-validation
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
