@@ -2,14 +2,14 @@ pipeline {
 agent any
 
 environment {
-    DOCKER_IMAGE = "dockerhub-username/bid-validation"
+    DOCKER_IMAGE = "deepak340/bid-validation"
 }
 
 stages {
 
     stage('Clone Repository') {
         steps {
-            git branch: 'main', url: 'https://github.com/yourusername/bid-validation.git'
+            git branch: 'main', url: 'https://github.com/deepaksudha2005-rgb/bid-validation.git'
         }
     }
 
